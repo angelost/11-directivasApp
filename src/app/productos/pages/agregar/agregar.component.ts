@@ -26,13 +26,15 @@ export class AgregarComponent implements OnInit {
   }
 
   cambiarNombre() {
-    this.texto1 = 'Fernando Herrera';
+    this.texto1 = Math.random().toString();
 
   }
 
   cambiarColor() {
 
-    this.color = 'green';
+    const color = "#xxxxxx".replace(/x/g, y=>(Math.random()*16|0).toString(16));
+
+    this.color = color;
 
   }
 
