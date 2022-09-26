@@ -3,7 +3,7 @@ import { Directive, ElementRef, Input, OnChanges, OnInit, SimpleChange, SimpleCh
 @Directive({
   selector: '[error-msg]'
 })
-export class ErrorMsgDirective implements OnInit, OnChanges {
+export class ErrorMsgDirective implements OnInit {
 
   private _color: string = 'red';
   private _mensaje: string = 'Este campo es requerido';
@@ -31,21 +31,6 @@ export class ErrorMsgDirective implements OnInit, OnChanges {
   constructor( private el: ElementRef<HTMLElement> ) {
     this.htmlElement = el;
    }
-
-  ngOnChanges(changes: SimpleChanges): void {
-
-    // if ( changes['mensaje'] ) {
-    //   const mensaje = changes['mensaje'].currentValue;
-    //   this.htmlElement.nativeElement.innerText= mensaje;
-    // }
-
-    // if ( changes['color'] ) {
-    //   const color = changes['color'].currentValue;
-    //   this.htmlElement.nativeElement.style.color = color;
-    // }
-
-    // console.log( changes );
-  }
 
   ngOnInit(): void {
     this.setEstilo();
