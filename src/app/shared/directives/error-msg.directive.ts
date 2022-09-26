@@ -10,16 +10,14 @@ export class ErrorMsgDirective implements OnInit, OnChanges {
 
   htmlElement: ElementRef<HTMLElement>;
 
-  //@Input() color: string = 'green';
   @Input() set color(valor: string) {
-    this.htmlElement.nativeElement.style.color = valor;
     this._color = valor;
+    this.setColor();
   }
 
-  //@Input() mensaje: string = 'campo requerido';
   @Input() set mensaje(valor: string) {
-    this.htmlElement.nativeElement.innerText= valor;
     this._mensaje = valor;
+    this.setMensaje();
   }
 
   constructor( private el: ElementRef<HTMLElement> ) {
@@ -42,21 +40,21 @@ export class ErrorMsgDirective implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    // this.setColor();
-    // this.setMensaje();
+    this.setEstilo();
+    this.setColor();
+    this.setMensaje();
   }
 
   setEstilo(): void {
     this.htmlElement.nativeElement.classList.add('form-text');
   }
 
-  // setColor(): void {
-  //   this.htmlElement.nativeElement.style.color = this.color;
-  //   this.htmlElement.nativeElement.classList.add('form-text');
-  // }
+  setColor(): void {
+    this.htmlElement.nativeElement.style.color = this._color;
+  }
 
-  // setMensaje(): void {
-  //   this.htmlElement.nativeElement.innerText= this.mensaje;
-  // }
+  setMensaje(): void {
+    this.htmlElement.nativeElement.innerText= this._mensaje;
+  }
 
 }
